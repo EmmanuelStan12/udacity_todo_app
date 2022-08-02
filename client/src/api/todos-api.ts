@@ -13,8 +13,7 @@ export async function getTodos(idToken: string): Promise<Todo[]> {
       'Authorization': `Bearer ${idToken}`
     },
   })
-  console.log('Todos:', response.data)
-  return response.data.items
+  return response.data.todos
 }
 
 export async function createTodo(
@@ -69,5 +68,6 @@ export async function getUploadUrl(
 }
 
 export async function uploadFile(uploadUrl: string, file: Buffer): Promise<void> {
+  console.log(uploadUrl)
   await Axios.put(uploadUrl, file)
 }
